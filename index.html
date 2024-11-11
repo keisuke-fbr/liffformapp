@@ -67,7 +67,7 @@
                 const date = $('input[name="date"]').val();
                 const content = $('input[name="content"]').val();
                 const amount = $('input[name="amount"]').val();
-                const msg = `${date}\n${content}\${amount}`;
+                const msg = `${date}\n${content}\n${amount}`;
                 sendText(msg);
                 return false;
             });
