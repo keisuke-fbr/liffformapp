@@ -67,7 +67,7 @@
                 const date = $('input[name="date"]').val();
                 const content = $('input[name="content"]').val();
                 const amount = $('input[name="amount"]').val();
-                const msg = `日付: ${date}\n内容: ${content}\n金額: ${amount}`;
+                const msg = `${date}\n${content}\${amount}`;
                 sendText(msg);
                 return false;
             });
