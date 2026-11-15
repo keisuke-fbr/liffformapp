@@ -37,6 +37,19 @@
                 </label>
             </div>
         </div>
+        <p class="mt-3">支払方法（任意）</p>
+        <div>
+            <select class="form-control w-100 mt-1" name="paymentMethod">
+                <option value="" selected>指定なし</option>
+                <option value="楽天Pay">楽天Pay</option>
+                <option value="楽天カード">楽天カード</option>
+                <option value="三井住友カード">三井住友カード</option>
+                <option value="JALカード">JALカード</option>
+                <option value="交通系">交通系</option>
+                <option value="現金">現金</option>
+                <option value="その他">その他</option>
+            </select>
+        </div>
         <input type="submit" class="mt-4 btn btn-primary" value="送信">
     </form>
     
@@ -79,7 +92,11 @@
                 const content = $('input[name="content"]').val();
                 const amount = $('input[name="amount"]').val();
                 const payer = $('input[name="payer"]:checked').val();
-                const msg = `${date}\n${content}\n${amount}\n${payer}`;
+                const paymentMethod = $('select[name="paymentMethod"]').val();
+                // 支払方法が未選択のときは4行のまま送る（5行目は選んだときだけ）
+                const msg = paymentMethod
+                    ? `${date}\n${content}\n${amount}\n${payer}\n${paymentMethod}`
+                    : `${date}\n${content}\n${amount}\n${payer}`;
                 sendText(msg);
                 return false;
             });
